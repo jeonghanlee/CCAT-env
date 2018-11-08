@@ -1,0 +1,10 @@
+VARS_EXCLUDES := $(.VARIABLES)
+
+include $(TOP)/configure/CONFIG_MODULE
+
+## It is not necessary to modify the following files in most case.
+## Order is matter
+
+include $(TOP)/configure/CONF/CONFIG_MAKEFILE
+include $(TOP)/configure/CONF/CONFIG_SRC
+include $(TOP)/configure/CONF/CONFIG_EXPORT

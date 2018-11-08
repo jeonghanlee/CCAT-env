@@ -1,0 +1,15 @@
+#
+MODULE_NAME:=ccat
+
+MODULE_TAG:=e9317bc
+
+MODULE_VERSION:=e9317bc
+# In most case, we don't need to touch the following variables.
+
+MODULE_SRC_PATH:=CCAT
+
+MODULE_MAKEFILE:=$(MODULE_NAME).Makefile
+KMOD_SRC_PATH:=$(MODULE_SRC_PATH)
+
+# The definitions shown below can also be placed in an untracked CONFIG_MODULE.local
+-include $(TOP)/configure/CONFIG_MODULE.local

@@ -1,0 +1,42 @@
+.DEFAULT_GOAL := help
+
+.PHONY: help default install build rebuild clean distclean
+
+# # help is defined in 
+# # https://gist.github.com/rcmachado/af3db315e31383502660
+help:
+	$(info --------------------------------------- )	
+	$(info Available targets)
+	$(info --------------------------------------- )
+	$(QUIET) awk '/^[a-zA-Z\-\_0-9]+:/ {            \
+	  nb = sub( /^## /, "", helpMsg );              \
+	  if(nb == 0) {                                 \
+	    helpMsg = $$0;                              \
+	    nb = sub( /^[^:]*:.* ## /, "", helpMsg );   \
+	  }                                             \
+	  if (nb)                                       \
+	    print  $$1 "\t" helpMsg;                    \
+	}                                               \
+	{ helpMsg = $$0 }'                              \
+	$(MAKEFILE_LIST) | column -ts:	
+
+
+default: help
+
+
+.PHONY: conf init
+
+
+conf: 
+	$(QUIET) install -m 644 $(TOP)/$(MODULE_MAKEFILE)  $(MODULE_SRC_PATH)/
+
+
+## Init: Clone Source
+init:
+ifeq "$(INIT_MODULE_SRC)" "1"
+	git clone https://github.com/Beckhoff/CCAT
+	cd $(MODULE_SRC_PATH) && git checkout $(MODULE_TAG)
+else
+	$(QUIET)echo "$(MODULE_SRC_PATH) exists. make distclean first, if one would like to restart it."
+endif			 
+

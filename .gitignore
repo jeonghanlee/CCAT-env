@@ -1,0 +1,10 @@
+*#
+*.list
+.#*
+*~
+.cmd
+.output
+*.local
+CCAT*
+CCAT/
+

@@ -1,0 +1,13 @@
+SUDO := sudo
+
+
+# Valid for only Development Mode, because we clone/remove them
+# See RULES_DEV
+# MODULE_SRC_PATH_INFO 1 : the directory is not there
+# MODULE_SRC_PATH_INFO 0 : the directory is there
+MODULE_SRC_PATH_INFO := $(shell test -d $(MODULE_SRC_PATH) 1>&2 2> /dev/null; echo $$?)
+
+ifeq "$(MODULE_SRC_PATH_INFO)" "1"
+INIT_MODULE_SRC = 1
+endif    
+

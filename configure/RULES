@@ -1,0 +1,8 @@
+#CONFIG
+
+include $(TOP)/configure/CONF/DEFINES_FT
+include $(TOP)/configure/CONF/RULES_PATCH
+include $(TOP)/configure/CONF/RULES_MODULE
+include $(TOP)/configure/CONF/RULES_DKMS
+
+include $(TOP)/configure/CONF/RULES_VARS

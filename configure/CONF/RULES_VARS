@@ -1,0 +1,19 @@
+
+MODULES_VARIABLES:=$(sort $(filter-out $(VARS_EXCLUDES) VARS_EXCLUDES,$(.VARIABLES)))
+
+.PHONY : env vars header
+
+## Print interesting VARIABLES
+env: vars
+
+vars: header
+	$(foreach v, $(MODULES_VARIABLES), $(info $(v) = $($(v)))) @#noop
+
+header:
+	$(QUIET)echo ""
+	$(QUIET)echo "------------------------------------------------------------"
+	$(QUIET)echo ">>>>          Current Envrionment Variables             <<<<"
+	$(QUIET)echo "------------------------------------------------------------"
+	$(QUIET)echo ""
+
+
