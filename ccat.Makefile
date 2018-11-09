@@ -17,44 +17,44 @@
 # 
 
 # from 3.6 we can use cmake -H. -B$(BUILD_DIR)
-cmake: 
-	mkdir -p $(MODULE_BUILD_DIR)
-	cd $(MODULE_BUILD_DIR) && cmake ..
+#cmake: 
+#	mkdir -p $(MODULE_BUILD_DIR)
+#	cd $(MODULE_BUILD_DIR) && cmake ..
 
 
-autoconf:
-	touch ChangeLog
-	autoreconf --force --install -v
-	./configure 
+#autoconf:
+#	touch ChangeLog
+#	autoreconf --force --install -v
+#	./configure 
 
-cmakebuild:
-	cd $(MODULE_BUILD_DIR) && make 
+#cmakebuild:
+#	cd $(MODULE_BUILD_DIR) && make 
 
 
-cmakeinstall: 
-	cd $(MODULE_BUILD_DIR) && make install
+#cmakeinstall: 
+#	cd $(MODULE_BUILD_DIR) && make install
 
 
 # uninstall:
 # 	make uninstall
 
 
-cmakeclean:
-	cd $(MODULE_BUILD_DIR) && make clean
+#cmakeclean:
+#	cd $(MODULE_BUILD_DIR) && make clean
 
 
 
-autoconfbuild:
-	make 
+#autoconfbuild:
+#	make 
 
 
-autoconfinstall: 
-	make install
+#autoconfinstall: 
+#	make install
 
 
-autoconfclean:
-	make clean
+#autoconfclean:
+#	make clean
 
 
-.PHONY: cmake cmakebuild cmakeinstall cmakeclean autoconf autoconfbuild autoconfinstall autoconfclean
+#.PHONY: cmake cmakebuild cmakeinstall cmakeclean autoconf autoconfbuild autoconfinstall autoconfclean
 
