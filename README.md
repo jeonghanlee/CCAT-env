@@ -34,6 +34,10 @@ $ make setup_clean
 ```
 
 ## Notice
+
+If one would like to setup IgH EtherCAT Master via https://github.com/icshwi/etherlabmaster, please *DO NOT* run the dkms_setup.bash script.
+
+## DKMS Systemd Service
 If one has already the running dkms.service in systemd, the next reboot with new kernl image will make the kernel module be ready. However, if one doesn't have one, please run bash dkms/dkms_setup.bash in order to enable dkms.service.
 
 ```
