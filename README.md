@@ -1,7 +1,7 @@
 CCAT 
 ====
 
-The following instruction is invalid for CentOS7. Please see CentOS7 section below.
+The following instruction is **invalid** for CentOS7. Please see CentOS7 section below.
 
 ## DKMS Setup, Build, and Install Kernel modules
 
