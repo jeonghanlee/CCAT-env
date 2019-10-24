@@ -1,5 +1,7 @@
-# CCAT 
+CCAT 
+====
 
+The following instruction is invalid for CentOS7. Please see CentOS7 section below.
 
 ## DKMS Setup, Build, and Install Kernel modules
 
@@ -50,4 +52,30 @@ $ systemctl status dkms
   Process: 3271 ExecStart=/bin/sh -c dkms autoinstall --verbose --kernelver $(un
  Main PID: 3271 (code=exited, status=0/SUCCESS)
 
+```
+
+
+## CentOS7
+
+We cannot use the dkms, because of the following error:
+```
+make: Entering directory `/usr/src/kernels/3.10.0-1062.1.2.el7.x86_64'
+arch/x86/Makefile:166: *** CONFIG_RETPOLINE=y, but not supported by the compiler. Compiler update recommended..  Stop.
+make: Leaving directory `/usr/src/kernels/3.10.0-1062.1.2.el7.x86_64'
+```
+
+Thus, one should setup it as follows:
+
+* Install kernel modules
+```
+make init
+make patch
+make centos7_modules
+sudo make centos7_modules_install
+make setup
+```
+
+* Remove all kernel modules, and its configuration
+```
+make setup_clean
 ```

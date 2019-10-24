@@ -1,0 +1,49 @@
+diff --git netdev.c netdev.c
+index 9e297bd..62de8e4 100644
+--- netdev.c
++++ netdev.c
+@@ -727,8 +727,8 @@ static enum hrtimer_restart poll_timer_callback(struct hrtimer *timer)
+ }
+ 
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(4,11,0))
+-static struct rtnl_link_stats64 *ccat_eth_get_stats64(struct net_device *dev, struct rtnl_link_stats64
+-						      *storage)
++static struct rtnl_link_stats64 *ccat_eth_get_stats64(struct net_device *dev,
++						      struct rtnl_link_stats64 *storage)
+ #else
+ static void ccat_eth_get_stats64(struct net_device *dev,
+ 				 struct rtnl_link_stats64 *storage)
+diff --git systemtime.c systemtime.c
+index 7b12d9b..3933057 100644
+--- systemtime.c
++++ systemtime.c
+@@ -4,19 +4,27 @@
+     Copyright (C) 2016 - 2018 Beckhoff Automation GmbH & Co. KG
+     Author: Steffen Dirkwinkel <s.dirkwinkel@beckhoff.com>
+ */
+-
++#include <linux/version.h>
+ #include <linux/clocksource.h>
+ #include <linux/delay.h>
+ #include <linux/io.h>
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,4,0))
+ #include <linux/io-64-nonatomic-lo-hi.h>
++#else
++#include <asm-generic/io-64-nonatomic-lo-hi.h>
++#endif
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/time.h>
+-#include <linux/version.h>
+ #include "module.h"
+ 
+ #define CCAT_SYSTEMTIME_RATING 140
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,0,0))
++/* clocksource cycle base type */
++typedef u64 cycle_t;
++#endif
++
+ /**
+  * struct ccat_systemtime - CCAT Systemtime function
+  * @ioaddr: PCI base address of the CCAT Update function

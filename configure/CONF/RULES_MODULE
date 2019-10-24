@@ -40,3 +40,20 @@ else
 	$(QUIET)echo "$(MODULE_SRC_PATH) exists. make distclean first, if one would like to restart it."
 endif			 
 
+distclean:
+ifneq ($(wildcard $(MODULE_SRC_PATH)/.*),)
+	$(QUIET)echo "Removing .....      $(MODULE_SRC_PATH)" 
+	$(QUIET)rm -rf $(MODULE_SRC_PATH)
+endif
+
+
+centos7_modules:
+	$(MAKE) -C $(MODULE_SRC_PATH)
+
+centos7_modules_install:
+	$(MAKE) -C $(MODULE_SRC_PATH) install
+
+centos7_clean:
+	$(MAKE) -C $(MODULE_SRC_PATH) $(@:centos7_%=%)
+
+.PHONY: centos7_modules centos7_modules_install centos7_clean

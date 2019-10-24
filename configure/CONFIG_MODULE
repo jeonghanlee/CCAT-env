@@ -1,9 +1,10 @@
 #
 MODULE_NAME:=ccat
-
+# Nov 14, 2018 : 5b50aff
 MODULE_TAG:=e9317bc
 
-MODULE_VERSION:=e9317bc
+MODULE_VERSION:=$(MODULE_TAG)
+
 # In most case, we don't need to touch the following variables.
 
 MODULE_SRC_PATH:=CCAT
