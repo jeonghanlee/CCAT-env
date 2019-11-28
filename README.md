@@ -1,5 +1,7 @@
-CCAT 
+CCAT-env 
 ====
+
+Configuration environment for Beckhoff CCAT FPGA Kernel mode driver [1] to run EtherCAT Master on CX devices 
 
 The following instruction is **invalid** for CentOS7. Please see CentOS7 section below.
 
@@ -79,3 +81,8 @@ make setup
 ```
 make setup_clean
 ```
+
+
+## References
+[1] https://github.com/Beckhoff/CCAT
+
